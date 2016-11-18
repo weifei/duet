@@ -46,24 +46,3 @@ class Solution(object):
             fronts[0] = newLevel
             levels[0] += 1
         return 0
-
-    def constructGraph(self, wordList):
-        graph = collections.defaultdict(list)
-        for i in xrange(len(wordList)-1):
-            for j in xrange(i+1, len(wordList)):
-                if self.diffByOne(wordList[i], wordList[j]):
-                    graph[wordList[i]].append(wordList[j])
-                    graph[wordList[j]].append(wordList[i])
-
-        return graph
-
-    def diffByOne(self, word1, word2):
-        if len(word1) != len(word2):
-            return False
-
-        count = 0
-        for x, y in zip(word1, word2):
-            if x != y:
-                count += 1
-
-        return count == 1
